@@ -79,11 +79,11 @@ class Stori_reaction(models.Model):
         return self.reaction
 
     class Meta:
-        unique_together = ("comment", "reaction_by")
+        unique_together = ("stori", "reaction_by")
 
 """ Comment Reactions """
 class Comment_reaction(models.Model):
-    comment = models.ForeignKey(Comment, related_name='comments', on_delete=models.CASCADE)
+    comment = models.ForeignKey(Stori_comment, related_name='comments', on_delete=models.CASCADE)
     reaction_by = models.ForeignKey(Account, on_delete=models.CASCADE)
     reaction = models.ForeignKey(Reaction_choice, on_delete=models.CASCADE)# Do I realy have to keep this here?
 

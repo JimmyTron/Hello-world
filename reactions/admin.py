@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Stori, Stori_category, Account, Stori_comment, Reaction, 
+from .models import User, Stori, Stori_category, Account, Stori_comment, Comment_reaction, Stori_reaction
 
 # Register your models here.#
 @admin.register(User)
@@ -16,8 +16,4 @@ class CustomUserAdmin(UserAdmin):
     )
 
 # mixins?
-@admin.site.register(Account)
-
-
-
-
+admin.site.register(Account)
