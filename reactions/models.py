@@ -64,7 +64,6 @@ class Stori_comment(models.Model):
 
 """ Reaction_choice """
 class Reaction_choice(models.Model):
-    poll = models.ForeignKey(Poll, related_name='choices', on_delete=models.CASCADE)
     reaction_choice = models.CharField(max_length=50)
 
     def __str__(self):
