@@ -39,7 +39,7 @@ class Stori_category(models.Model):
         verbose_name_plural = "Categories"
 
 """ Stori """
-class Stori(models.model): #stori is swahili for story. was thinking of get the slang version 'risto'/'riba' in there..
+class Stori(models.Model): #stori is swahili for story. was thinking of get the slang version 'risto'/'riba' in there..
     title = model.CharField(max_length=50)
     stori = model.CharField(max_length=280)#Using 280 here since its twitter's max characters for a single tweet 
     description = model.CharField(max_length=100, blank=True)
