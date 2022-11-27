@@ -40,8 +40,8 @@ class Stori_category(models.Model):
 
 """ Stori """
 class Stori(models.Model): #stori is swahili for story. was thinking of get the slang version 'risto'/'riba' in there..
-    title = model.CharField(max_length=50)
-    stori = model.CharField(max_length=280)#Using 280 here since its twitter's max characters for a single tweet 
+    title = models.CharField(max_length=50)
+    stori = models.CharField(max_length=280)#Using 280 here since its twitter's max characters for a single tweet 
     description = model.CharField(max_length=100, blank=True)
     created_by = models.ForeignKey(Account, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now=True)
