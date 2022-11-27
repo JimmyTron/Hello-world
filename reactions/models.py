@@ -65,7 +65,7 @@ class Stori_comment(models.Model):
 """ Reaction_choice """
 class Reaction_choice(models.Model):
     poll = models.ForeignKey(Poll, related_name='choices', on_delete=models.CASCADE)
-    reaction_choice = models.CharField(max_length=100)
+    reaction_choice = models.CharField(max_length=50)
 
     def __str__(self):
         return self.reaction_choice
@@ -74,7 +74,7 @@ class Reaction_choice(models.Model):
 class Stori_reaction(models.Model):
     stori = models.ForeignKey(Stori,  on_delete=models.CASCADE)
     reaction_by = models.ForeignKey(Account, on_delete=models.CASCADE)
-    reaction = models.ForeignKey(Stori, on_delete=models.CASCADE)# Do I realy have to keep this here?
+    reaction = models.ForeignKey(Reaction_choice, on_delete=models.CASCADE)# Do I realy have to keep this here?
 
     def __str__(self):
         return self.reaction
@@ -86,7 +86,7 @@ class Stori_reaction(models.Model):
 class Comment_reaction(models.Model):
     comment = models.ForeignKey(Comment, related_name='comments', on_delete=models.CASCADE)
     reaction_by = models.ForeignKey(Account, on_delete=models.CASCADE)
-    reaction = models.ForeignKey(Stori, on_delete=models.CASCADE)# Do I realy have to keep this here?
+    reaction = models.ForeignKey(Reaction_choice, on_delete=models.CASCADE)# Do I realy have to keep this here?
 
     def __str__(self):
         return self.reaction
