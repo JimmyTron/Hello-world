@@ -14,6 +14,12 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {'fields': ('username', 'password1', 'password2', 'is_staff', 'is_active')}),
     )
+    
 
 # mixins?
 admin.site.register(Account)
+admin.site.register(Stori)
+admin.site.register(Stori_category)
+admin.site.register(Stori_comment)
+admin.site.register(Comment_reaction)
+admin.site.register(Stori_reaction)
