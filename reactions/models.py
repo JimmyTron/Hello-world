@@ -65,8 +65,12 @@ class Stori_comment(models.Model):
         return f'{self.reaction_by} commented on: {self.stori.title} with: {self.comment}'
 
 """ Reaction_choice """
+VOTES = (
+    ("UPVOTE", "Upvote"),
+    ("DOWNVOTE", "Downvote"),
+)
 class Reaction_choice(models.Model):
-    reaction_choice = models.CharField(max_length=50)
+    reaction_choice = models.CharField(max_length=50, choices=VOTES)
 
     def __str__(self):
         return self.reaction_choice
