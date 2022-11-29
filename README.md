@@ -5,3 +5,6 @@
 
 ## Stori API
 ![Screenshot from 2022-11-29 07-58-53](https://user-images.githubusercontent.com/23496280/204443669-666ddf84-943b-417c-85f4-aef269b6112c.png)
+
+## Admin 
+![image](https://user-images.githubusercontent.com/23496280/204451451-9cd1deb7-422f-4096-8e5c-de009b0cdd95.png)
