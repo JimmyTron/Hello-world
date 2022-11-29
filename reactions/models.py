@@ -32,9 +32,10 @@ class Account(models.Model):
 """ Stori_category """
 class Stori_category(models.Model):
     category = models.CharField(max_length=100)
+    about = models.TextField(blank=True, null=True)
     
     def __str__(self):
-        return self.category
+        return f'{self.category}: {self.about}'
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -46,10 +47,10 @@ class Stori(models.Model): #stori is swahili for story. was thinking of get the 
     description = models.CharField(max_length=100, blank=True)
     created_by = models.ForeignKey(Account, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now=True)
-    #category = "to figure the relationship type"
+    category = models.ForeignKey(Stori_category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+         return f'{self.title} created by: {self.created_by}'
     
     class Meta:
         verbose_name_plural = "Mastori"
@@ -61,7 +62,7 @@ class Stori_comment(models.Model):
     comment = models.CharField(max_length=100)
     
     def __str__(self):
-        return self.comment
+        return f'{self.reaction_by} commented on: {self.stori.title} with: {self.comment}'
 
 """ Reaction_choice """
 class Reaction_choice(models.Model):
@@ -77,7 +78,7 @@ class Stori_reaction(models.Model):
     reaction = models.ForeignKey(Reaction_choice, on_delete=models.CASCADE)# Do I realy have to keep this here?
 
     def __str__(self):
-        return self.reaction
+        return f'{self.reaction_by} reacted with a  {self.reaction} on {self.stori.title} by {self.stori.created_by}'
 
     class Meta:
         unique_together = ("stori", "reaction_by")
@@ -89,7 +90,7 @@ class Comment_reaction(models.Model):
     reaction = models.ForeignKey(Reaction_choice, on_delete=models.CASCADE)# Do I realy have to keep this here?
 
     def __str__(self):
-        return self.reaction
+        return f'{self.reaction_by} reacted with a {self.reaction} on {self.comment.comment} '
 
     class Meta:
         unique_together = ("comment", "reaction_by")

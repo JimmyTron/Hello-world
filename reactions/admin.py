@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, Stori, Stori_category, Account, Stori_comment, Comment_reaction, Stori_reaction
+from .models import User, Stori, Stori_category, Account, Stori_comment, Comment_reaction, Stori_reaction, Reaction_choice
 
 # Register your models here.#
 @admin.register(User)
@@ -23,3 +23,4 @@ admin.site.register(Stori_category)
 admin.site.register(Stori_comment)
 admin.site.register(Comment_reaction)
 admin.site.register(Stori_reaction)
+admin.site.register(Reaction_choice)

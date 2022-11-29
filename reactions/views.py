@@ -6,7 +6,7 @@ from .models import Stori
 def stori_list(request):
     MAX_OBJECTS = 20
     mastori = Stori.objects.all()[:MAX_OBJECTS]
-    data = {"results": list(mastori.values("stori","created_by__user","created"))}
+    data = {"results": list(mastori.values("stori","created_by__account.user","created"))}
     return JsonResponse(data)
 
 def stori_detail(request, pk):
