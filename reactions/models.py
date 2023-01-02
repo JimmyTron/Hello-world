@@ -41,13 +41,22 @@ class Stori_category(models.Model):
         verbose_name_plural = "Categories"
 
 """ Stori """
+""" stori_status """
+STATUS = (
+    (0,"Draft"),
+    (1,"Published")
+)
 class Stori(models.Model): #stori is swahili for story. was thinking of get the slang version 'risto'/'riba' in there..
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100, unique=True)
     stori = models.CharField(max_length=280)#Using 280 here since its twitter's max characters for a single tweet 
     description = models.CharField(max_length=100, blank=True)
     created_by = models.ForeignKey(Account, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now=True)
+    updated_on = models.DateTimeField(auto_now= True)
     category = models.ForeignKey(Stori_category, on_delete=models.CASCADE)
+    status = models.IntegerField(choices=STATUS, default=0)
+    
 
     def __str__(self):
          return f'{self.title} created by: {self.created_by}'
@@ -98,4 +107,3 @@ class Comment_reaction(models.Model):
 
     class Meta:
         unique_together = ("comment", "reaction_by")
-
