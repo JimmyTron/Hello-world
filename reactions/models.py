@@ -49,7 +49,8 @@ STATUS = (
     (0,"Draft"),
     (1,"Published")
 )
-class Stori(models.Model): """stori is swahili for story. was thinking of using the slang version 'risto'/'riba' in there.. """
+"""stori is swahili for story. was thinking of using the slang version 'risto'/'riba' in there.. """
+class Stori(models.Model): 
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
     stori = models.CharField(max_length=280) """Using 280 here since its twitter's max characters for a single tweet""" 
