@@ -15,7 +15,7 @@ class User(AbstractUser):
 
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
-        
+      
 
 """ User Accounts """
 class Account(models.Model):
@@ -28,6 +28,9 @@ class Account(models.Model):
 
     def __str__(self) -> str:
         return self.alias
+    
+    class Meta:
+        app_label = 'auth'
 
 """ Stori_category """
 class Stori_category(models.Model):
@@ -46,16 +49,16 @@ STATUS = (
     (0,"Draft"),
     (1,"Published")
 )
-class Stori(models.Model): #stori is swahili for story. was thinking of get the slang version 'risto'/'riba' in there..
+class Stori(models.Model): """stori is swahili for story. was thinking of using the slang version 'risto'/'riba' in there.. """
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
-    stori = models.CharField(max_length=280)#Using 280 here since its twitter's max characters for a single tweet 
+    stori = models.CharField(max_length=280) """Using 280 here since its twitter's max characters for a single tweet""" 
     description = models.CharField(max_length=100, blank=True)
     created_by = models.ForeignKey(Account, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now= True)
     category = models.ForeignKey(Stori_category, on_delete=models.CASCADE)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=0) """This here serves to indicate whether a stori has been published or not."""
     
 
     def __str__(self):
@@ -84,7 +87,7 @@ class Reaction_choice(models.Model):
     def __str__(self):
         return self.reaction_choice
 
-""" Stori_reactions """        
+""" Stori_reactions """ 
 class Stori_reaction(models.Model):
     stori = models.ForeignKey(Stori,  on_delete=models.CASCADE)
     reaction_by = models.ForeignKey(Account, on_delete=models.CASCADE)

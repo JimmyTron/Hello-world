@@ -14,11 +14,17 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {'fields': ('username', 'password1', 'password2', 'is_staff', 'is_active')}),
     )
-    
+
+""" Stori admin """
+class StoriAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug', 'status','created')
+    list_filter = ("status",)
+    search_fields = ['title', 'stori']
+    prepopulated_fields = {'slug': ('title',)} 
 
 # mixins?
 admin.site.register(Account)
-admin.site.register(Stori)
+admin.site.register(Stori,StoriAdmin)
 admin.site.register(Stori_category)
 admin.site.register(Stori_comment)
 admin.site.register(Comment_reaction)
