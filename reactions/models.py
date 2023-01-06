@@ -53,7 +53,8 @@ STATUS = (
 class Stori(models.Model): 
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
-    stori = models.CharField(max_length=280) """Using 280 here since its twitter's max characters for a single tweet""" 
+    stori = models.CharField(max_length=280) 
+    """Using 280 here since its twitter's max characters for a single tweet""" 
     description = models.CharField(max_length=100, blank=True)
     created_by = models.ForeignKey(Account, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now=True)
