@@ -60,7 +60,8 @@ class Stori(models.Model):
     created = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now= True)
     category = models.ForeignKey(Stori_category, on_delete=models.CASCADE)
-    status = models.IntegerField(choices=STATUS, default=0) """This here serves to indicate whether a stori has been published or not."""
+    status = models.IntegerField(choices=STATUS, default=0) 
+    """This here serves to indicate whether a stori has been published or not."""
     
 
     def __str__(self):
