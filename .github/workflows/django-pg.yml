@@ -1,4 +1,4 @@
-name: django
+name: django Postgres
 
 on: [push]
 
