@@ -7,6 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class AccountSerializer(serializers.ModelSerializer):
+    user = UserSerializer(many=True, required=False)
     class Meta:
         model = Account
         fields = '__all__'

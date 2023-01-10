@@ -28,9 +28,6 @@ class Account(models.Model):
 
     def __str__(self) -> str:
         return self.alias
-    
-    class Meta:
-        app_label = 'auth'
 
 """ Stori_category """
 class Stori_category(models.Model):
