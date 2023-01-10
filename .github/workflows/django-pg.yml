@@ -33,6 +33,6 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest
+
         python manage.py test
       
